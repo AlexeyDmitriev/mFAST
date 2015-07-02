@@ -73,7 +73,7 @@ TEST_CASE("test the operations of interger_field","[integer_field_test]")
     inst.copy_construct_value(storage, storage2, &allocator);
     uint64_cref copied_cref(&storage2, &inst);
 
-    BOOST_CHECK_EQUAL(ref.value(), copied_cref.value());
+    REQUIRE(ref.value() == copied_cref.value());
 
     ref.to_initial_value();
     REQUIRE( ref.present() );
