@@ -34,3 +34,7 @@ script:
     - cmake ..
     - make
     - make test
+# whitelist
+branches:
+  only:
+    - master
