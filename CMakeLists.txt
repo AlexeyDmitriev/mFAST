@@ -68,7 +68,7 @@ foreach (p IN ITEMS LIB BIN INCLUDE DATA CMAKE)
   if (NOT IS_ABSOLUTE "${${var}}")
     set("ABSOLUTE_${var}" "${CMAKE_INSTALL_PREFIX}/${${var}}")
   else ()
-    set("ABSOLUTE_${var}" "${CMAKE_INSTALL_PREFIX}/${${var}}")
+    set("ABSOLUTE_${var}" "${${var}}")
   endif ()
 endforeach (p)
 
