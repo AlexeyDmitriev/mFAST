@@ -66,10 +66,13 @@ set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
 foreach (p IN ITEMS LIB BIN INCLUDE DATA CMAKE)
   set (var "INSTALL_${p}_DIR")
   if (NOT IS_ABSOLUTE "${${var}}")
-    set("${var}" "${CMAKE_INSTALL_PREFIX}/${${var}}")
+    set("ABSOLUTE_${var}" "${CMAKE_INSTALL_PREFIX}/${${var}}")
+  else ()
+    set("ABSOLUTE_${var}" "${CMAKE_INSTALL_PREFIX}/${${var}}")
   endif ()
 endforeach (p)
 
+set(ABSOLUTE_CMAKE_INSTALL_PREFIX ${})
 
 include_directories ("${PROJECT_BINARY_DIR}"
                      "${PROJECT_SOURCE_DIR}/src")
@@ -244,7 +247,7 @@ configure_file(mFASTConfig.cmake.in
                @ONLY)
 
 # Create the mFASTConfig.cmake for the install tree
-file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}" "${INSTALL_INCLUDE_DIR}")
+file(RELATIVE_PATH REL_INCLUDE_DIR "${ABSOLUTE_INSTALL_CMAKE_DIR}" "${ABSOLUTE_INSTALL_INCLUDE_DIR}")
 set(CONF_INCLUDE_DIRS "\${MFAST_CMAKE_DIR}/${REL_INCLUDE_DIR}")
 configure_file(mFASTConfig.cmake.in
                "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mFASTConfig.cmake"
