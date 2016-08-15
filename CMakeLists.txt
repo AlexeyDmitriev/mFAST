@@ -72,8 +72,6 @@ foreach (p IN ITEMS LIB BIN INCLUDE DATA CMAKE)
   endif ()
 endforeach (p)
 
-set(ABSOLUTE_CMAKE_INSTALL_PREFIX ${})
-
 include_directories ("${PROJECT_BINARY_DIR}"
                      "${PROJECT_SOURCE_DIR}/src")
 
