@@ -72,6 +72,7 @@ foreach (p IN ITEMS LIB BIN INCLUDE DATA CMAKE)
   endif ()
 endforeach (p)
 
+
 include_directories ("${PROJECT_BINARY_DIR}"
                      "${PROJECT_SOURCE_DIR}/src")
 
